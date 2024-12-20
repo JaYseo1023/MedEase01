@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from apis.api_base import api_router
-
+import utils.firebase_init
 
 
 def include_cors(app):
@@ -20,7 +20,7 @@ def include_router(app) :
 
 
 def start_application() : 
-    app = FastAPI(title="DevOcean", version="1.0")
+    app = FastAPI(title="MedEase", version="1.0")
     include_cors(app)
     include_router(app)
 
@@ -30,5 +30,12 @@ def start_application() :
 # 어플리케이션 시작
 app =  start_application()
      
+@app.on_event("startup")
+async def startup_event():
+    # Firebase 초기화를 main.py 실행 시 최초 1회 수행
+    utils.firebase_init
 
+@app.on_event("shutdown")
+async def shutdown_event():
+    print("Shutting down application...")
 

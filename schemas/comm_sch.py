@@ -2,10 +2,9 @@ from pydantic import BaseModel, EmailStr
 from typing import Optional
 
 
-class EmailSendRequestSch(BaseModel):
-    user_email : EmailStr
-    title : str
-    content : Optional[str]
+class Item(BaseModel):
+    name : str
+    description : Optional[str] = None
 
     class Config : 
         orm_mode = True
