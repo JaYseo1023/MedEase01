@@ -1,4 +1,3 @@
-import firebase_admin
 from firebase_admin import credentials, firestore, initialize_app
 
 # Firebase 서비스 계정 키 경로

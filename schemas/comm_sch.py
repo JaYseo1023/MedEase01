@@ -7,8 +7,8 @@ class Item(BaseModel):
     description : Optional[str] = None
 
     class Config : 
-        orm_mode = True
-        schema_extra = {
+        from_attributes = True
+        json_schema_extra = {
             "example": {
                 "user_email": "baezzang@sk.com",
                 "title": "반갑습니다",
